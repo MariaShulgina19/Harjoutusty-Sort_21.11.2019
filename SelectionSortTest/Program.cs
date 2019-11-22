@@ -306,6 +306,7 @@ namespace SelectionSortTest
         //MAIN PROGRAMM
         static void Main(string[] args)
         {
+            Console.WriteLine("test");
            SortDelegate ds1 = new SortDelegate(InsertionSort); //Sort1
             SortDelegate ds1DES = new SortDelegate(InsertionSortDES);
             SortDelegate ds2 = new SortDelegate(SelectionSort);
