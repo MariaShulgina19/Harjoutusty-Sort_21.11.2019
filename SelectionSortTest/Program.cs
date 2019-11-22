@@ -268,6 +268,39 @@ namespace SelectionSortTest
             Console.WriteLine("Sorting time: {0}", elapsedTime.TotalMilliseconds);
             
         }
+        //Metod to use Sorted ASC Table
+
+        static void MetodiSortedASC(SortDelegate del)
+        {
+            // luo taulukko (satunnaisluvuilla)
+            int[] num = CreateAscendingTable(10000); //
+            //int[] num = new int[100]; //int[] taulukko = CreateTable(10000);
+            // ota aika
+            Stopwatch kello = Stopwatch.StartNew();
+            del(num);
+            // laske aikaero
+            var elapsedTime = kello.Elapsed;
+                     // tulosta
+            Console.WriteLine("Sorting time: {0}", elapsedTime.TotalMilliseconds);
+            
+        }
+
+         //Metod to use Sorted ASC Table
+
+        static void MetodiSortedDES(SortDelegate del)
+        {
+            // luo taulukko (satunnaisluvuilla)
+            int[] num = CreateDescendingTable(10000); //
+            //int[] num = new int[100]; //int[] taulukko = CreateTable(10000);
+            // ota aika
+            Stopwatch kello = Stopwatch.StartNew();
+            del(num);
+            // laske aikaero
+            var elapsedTime = kello.Elapsed;
+                     // tulosta
+            Console.WriteLine("Sorting time: {0}", elapsedTime.TotalMilliseconds);
+            
+        }
 
 
         //MAIN PROGRAMM
@@ -280,7 +313,8 @@ namespace SelectionSortTest
             SortDelegate merge = new SortDelegate(MergeSortMain);
             SortDelegate  arraySort = new SortDelegate(ArraySort);
 
-            
+             Console.WriteLine("-----------------------------------------------------------------");
+            Console.WriteLine("UNSORTED TABLE");
 
             // testataan INsertion Sort
               Console.WriteLine("Insertion Sort");
@@ -310,8 +344,69 @@ namespace SelectionSortTest
             // testataan Merge Sort
             Metodi(arraySort);
 
-            
 
+            Console.WriteLine("-----------------------------------------------------------------");
+            Console.WriteLine("SORTED TABLE ASC");
+             // testataan INsertion Sort
+              Console.WriteLine("Insertion Sort");
+               MetodiSortedASC(ds1);
+               Console.WriteLine();
+
+            // testataan INsertion Sort DES
+              Console.WriteLine("Insertion Sort DES");
+               MetodiSortedASC(ds1DES);
+               Console.WriteLine();
+            
+            Console.WriteLine("Selection Sort");
+            // testataan Selection Sort
+            MetodiSortedASC(ds2);
+            Console.WriteLine();
+            
+            Console.WriteLine("Quick Sort");
+            // testataan Quick Sort 
+           MetodiSortedASC(quick);
+            Console.WriteLine();
+            Console.WriteLine("Merge Sort");
+            // testataan Merge Sort
+            MetodiSortedASC(merge);
+
+            Console.WriteLine();
+            Console.WriteLine("Array Sort");
+            // testataan Merge Sort
+            MetodiSortedASC(arraySort);
+
+              Console.WriteLine("-----------------------------------------------------------------");
+            Console.WriteLine("SORTED TABLE DESC");
+
+                // testataan INsertion Sort
+              Console.WriteLine("Insertion Sort");
+              MetodiSortedDES(ds1);
+               Console.WriteLine();
+
+            // testataan INsertion Sort DES
+              Console.WriteLine("Insertion Sort DES");
+                MetodiSortedDES(ds1DES);
+               Console.WriteLine();
+            
+            Console.WriteLine("Selection Sort");
+            // testataan Selection Sort
+             MetodiSortedDES(ds2);
+            Console.WriteLine();
+            
+            Console.WriteLine("Quick Sort");
+            // testataan Quick Sort 
+            MetodiSortedDES(quick);
+            Console.WriteLine();
+            Console.WriteLine("Merge Sort");
+            // testataan Merge Sort
+            MetodiSortedASC(merge);
+
+            Console.WriteLine();
+            Console.WriteLine("Array Sort");
+            // testataan Merge Sort
+             MetodiSortedDES(arraySort);
+
+            Console.WriteLine("-----------------------------------------------------------------");
             /*
 
             // CreateDescendingTable(100);
